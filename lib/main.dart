@@ -58,71 +58,75 @@ class HomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
-              Container(
-                height: 100,
-                margin: const EdgeInsets.only(top: 16),
-                //color: Colors.grey,
-                child: ListView.builder(
-                    itemCount: list.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      var item = list[index];
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.symmetric(
-                                    vertical: 1, horizontal: 4),
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(24),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Colors.blue.shade800,
-                                        Colors.blue.shade400,
-                                        Colors.blue.shade100,
-                                      ],
-                                      begin: Alignment.topCenter,
-                                    )),
-                                child: Container(
-                                  padding: EdgeInsets.all(4),
-                                  margin: EdgeInsets.all(4),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                  ),
-                                  child: ClipRRect(
-                                      clipBehavior: Clip.antiAlias,
-                                      borderRadius: BorderRadius.circular(18),
-                                      child: Image.asset(
-                                          'assets/img/stories/${item.imageFileName}')),
-                                ),
-                              ),
-                              Positioned(
-                                  bottom: 0,
-                                  right: 0,
-                                  child: Image.asset('assets/img/icons/${item.iconFileName}',width: 25,)),
-                            ],
-                          ),
-                          Text(
-                            item.name,
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle1!
-                                .copyWith(
-                                    fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                        ],
-                      );
-                    }),
-              ),
+              _list_stories(list: list),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _list_stories({required list}) {
+   return Container(
+      height: 100,
+      margin: const EdgeInsets.only(top: 16),
+      //color: Colors.grey,
+      child: ListView.builder(
+          itemCount: list.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            var item = list[index];
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 1, horizontal: 4),
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(24),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.blue.shade800,
+                              Colors.blue.shade400,
+                              Colors.blue.shade100,
+                            ],
+                            begin: Alignment.topCenter,
+                          )),
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        margin: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.circular(18),
+                            child: Image.asset(
+                                'assets/img/stories/${item.imageFileName}')),
+                      ),
+                    ),
+                    Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Image.asset('assets/img/icons/${item.iconFileName}',width: 25,)),
+                  ],
+                ),
+                Text(
+                  item.name,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(
+                      fontWeight: FontWeight.bold, fontSize: 13),
+                ),
+              ],
+            );
+          }),
     );
   }
 }
