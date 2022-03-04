@@ -1,62 +1,84 @@
-
 import 'package:flutter/material.dart';
 
 ThemeData theme() {
   const String DEFAULTFONTFAMILY = 'Avenir';
+  const Color primaryColor = Color(0xFF0D253C);
   return ThemeData(
-    primaryColor: Color(0xFF0D253C),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            fontFamily: DEFAULTFONTFAMILY,
+          ),
+        ),
+      ),
+    ),
+    primaryColor: primaryColor,
     primarySwatch: Colors.blue,
-    primaryColorDark: Color(0xFF083CC1),
-    primaryColorLight: Color(0xFF085CDB),
+    primaryColorDark: const Color(0xFF083CC1),
+    primaryColorLight: const Color(0xFF085CDB),
     scaffoldBackgroundColor: Colors.white,
-    backgroundColor: Color(0xFFF5F5F5),
+    backgroundColor: const Color(0xFFF5F5F5),
     fontFamily: DEFAULTFONTFAMILY,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.bold,
         fontSize: 36,
       ),
       headline2: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.bold,
         fontSize: 24,
       ),
       headline3: TextStyle(
-        color: Color(0XFF1B070B),
-        fontWeight: FontWeight.bold,
+        color: primaryColor,
+        fontWeight: FontWeight.w700,
         fontSize: 18,
       ),
       headline4: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.bold,
         fontSize: 16,
       ),
       headline5: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontSize: 20,
       ),
       headline6: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontFamily: DEFAULTFONTFAMILY,
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
       bodyText1: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.normal,
         fontSize: 12,
       ),
       bodyText2: TextStyle(
-        color: Color(0XFF1B070B),
+        color: primaryColor,
         fontWeight: FontWeight.normal,
         fontSize: 12,
       ),
       subtitle1: TextStyle(
-        color: Color(0XFF2D4379),
+        color: primaryColor,
         fontWeight: FontWeight.w500,
         fontSize: 14,
+      ),
+      subtitle2: TextStyle(
+        color: primaryColor,
+        fontWeight: FontWeight.w400,
+        fontSize: 14,
+      ),
+      caption: TextStyle(
+        color: Color(0xff7b8bb2),
+        fontWeight: FontWeight.w700,
+        fontFamily: DEFAULTFONTFAMILY,
+        fontSize: 10,
       ),
     ),
   );

@@ -24,6 +24,7 @@ class CategoryList extends StatelessWidget {
           disableCenter: true,
           enableInfiniteScroll: false,
           enlargeCenterPage: true,
+          autoPlay: true,
           scrollPhysics:const BouncingScrollPhysics(),
           enlargeStrategy: CenterPageEnlargeStrategy.height),
     );
