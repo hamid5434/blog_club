@@ -1,3 +1,4 @@
+import 'package:blog_club/category_list.dart';
 import 'package:blog_club/data.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               _list_stories(list: list),
+              SizedBox(height: 16,),
+              CategoryList(),
             ],
           ),
         ),
@@ -76,6 +79,7 @@ class HomePage extends StatelessWidget {
         physics: BouncingScrollPhysics(),
           itemCount: list.length,
           scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.only(left: 32),
           itemBuilder: (context, index) {
             StoryData item = list[index];
             return Container(
@@ -111,7 +115,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _profile_widget({required String imageFileName}) {
+  Widget _ProfileWidget({required String imageFileName}) {
     return ClipRRect(
       clipBehavior: Clip.antiAlias,
       borderRadius: BorderRadius.circular(18),
@@ -136,14 +140,14 @@ class HomePage extends StatelessWidget {
             begin: Alignment.topCenter,
           )),
       child: Container(
-        padding: EdgeInsets.all(4),
-        margin: EdgeInsets.all(4),
+        padding:const EdgeInsets.all(4),
+        margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.white,
         ),
         child:
-        _profile_widget(imageFileName: imageFileName),
+        _ProfileWidget(imageFileName: imageFileName),
       ),
     );
   }
@@ -152,18 +156,18 @@ class HomePage extends StatelessWidget {
       width: 70,
       height: 70,
       child: DottedBorder(
-        radius: Radius.circular(24),
+        radius: const Radius.circular(24),
         strokeWidth: 2.5,
         color: Theme.of(context).textTheme.bodyText2!.color!,
         borderType: BorderType.RRect,
         dashPattern: [5,3],
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
         child: Container(
 
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24),
           ),
-          child: _profile_widget(imageFileName: imageFileName),
+          child: _ProfileWidget(imageFileName: imageFileName),
         ),
       ),
     );

@@ -39,8 +39,9 @@ ThemeData theme() {
       ),
       headline6: TextStyle(
         color: Color(0XFF1B070B),
+        fontFamily: DEFAULTFONTFAMILY,
         fontWeight: FontWeight.bold,
-        //fontSize: 14,
+        fontSize: 18,
       ),
       bodyText1: TextStyle(
         color: Color(0XFF1B070B),
