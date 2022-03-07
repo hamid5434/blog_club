@@ -13,8 +13,9 @@ class CategoryList extends StatelessWidget {
       itemBuilder: (context, index, realIndex) {
         return _Category(
             left: realIndex == 0 ? 32 : 8,
-            right: realIndex == categories.length - 1 ? 32 :8,
-            category: categories[realIndex], context: context);
+            right: realIndex == categories.length - 1 ? 32 : 8,
+            category: categories[realIndex],
+            context: context);
       },
       options: CarouselOptions(
           scrollDirection: Axis.horizontal,
@@ -25,7 +26,7 @@ class CategoryList extends StatelessWidget {
           enableInfiniteScroll: false,
           enlargeCenterPage: true,
           autoPlay: true,
-          scrollPhysics:const BouncingScrollPhysics(),
+          scrollPhysics: const BouncingScrollPhysics(),
           enlargeStrategy: CenterPageEnlargeStrategy.height),
     );
   }
@@ -36,26 +37,25 @@ class CategoryList extends StatelessWidget {
       required double left,
       required double right}) {
     return Container(
-      margin: EdgeInsets.only(left: left,right: right,bottom: 16),
+      margin: EdgeInsets.only(left: left, right: right, bottom: 16),
       child: Stack(
         children: [
           Positioned.fill(
-
             child: Container(
-
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(32),
               ),
               foregroundDecoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.center,
-                      colors: [
-                        Color(0xff0d253c),
-                        Colors.transparent,
-                      ])),
+                borderRadius: BorderRadius.circular(32),
+                gradient: const LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.center,
+                    colors: [
+                      Color(0xff0d253c),
+                      Colors.transparent,
+                    ]),
+              ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(32),
                 child: Image.asset(
@@ -69,13 +69,14 @@ class CategoryList extends StatelessWidget {
             top: 250,
             right: 65,
             left: 48,
-            bottom: 18,
+            bottom: 2,
             child: Container(
-              margin: EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 5),
-              decoration: BoxDecoration(boxShadow: [
+              margin:
+                  const EdgeInsets.only(left: 0, top: 0, right: 0, bottom: 5),
+              decoration: const BoxDecoration(boxShadow: [
                 BoxShadow(
                   blurRadius: 20,
-                  color: Color(0xaa0d253c),
+                  color: Color(0xaa071f36),
                 ),
               ]),
             ),

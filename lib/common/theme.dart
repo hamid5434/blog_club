@@ -1,7 +1,7 @@
+import 'package:blog_club/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme() {
-  const String DEFAULTFONTFAMILY = 'Avenir';
   const Color primaryColor = Color(0xFF0D253C);
   return ThemeData(
     textButtonTheme: TextButtonThemeData(
@@ -10,7 +10,7 @@ ThemeData theme() {
           const TextStyle(
             fontWeight: FontWeight.w400,
             fontSize: 14,
-            fontFamily: DEFAULTFONTFAMILY,
+            fontFamily: FontFamily.avenir,
           ),
         ),
       ),
@@ -21,7 +21,7 @@ ThemeData theme() {
     primaryColorLight: const Color(0xFF085CDB),
     scaffoldBackgroundColor: Colors.white,
     backgroundColor: const Color(0xFFF5F5F5),
-    fontFamily: DEFAULTFONTFAMILY,
+    fontFamily: FontFamily.avenir,
     textTheme: const TextTheme(
       headline1: TextStyle(
         color: primaryColor,
@@ -50,7 +50,7 @@ ThemeData theme() {
       ),
       headline6: TextStyle(
         color: primaryColor,
-        fontFamily: DEFAULTFONTFAMILY,
+        fontFamily: FontFamily.avenir,
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
@@ -77,7 +77,7 @@ ThemeData theme() {
       caption: TextStyle(
         color: Color(0xff7b8bb2),
         fontWeight: FontWeight.w700,
-        fontFamily: DEFAULTFONTFAMILY,
+        fontFamily: FontFamily.avenir,
         fontSize: 10,
       ),
     ),
