@@ -2,6 +2,8 @@ import 'package:blog_club/gen/assets.gen.dart';
 import 'package:blog_club/home.dart';
 import 'package:flutter/material.dart';
 
+import 'onboarding/onboarding.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 3)).then((value) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => const OnBoarding(),
         ),
       );
     });

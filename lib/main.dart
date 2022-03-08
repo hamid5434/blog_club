@@ -1,3 +1,4 @@
+import 'package:blog_club/article.dart';
 import 'package:blog_club/category_list.dart';
 import 'package:blog_club/data.dart';
 import 'package:blog_club/gen/assets.gen.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       home: Stack(
         children: const [
           Positioned.fill(
-            child: SplashScreen(),
+            child: ArticleScreen(),
           ),
           // Positioned(
           //   bottom: 0,

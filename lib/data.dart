@@ -1,3 +1,5 @@
+import 'package:blog_club/onboarding/onboarding_item.dart';
+
 class StoryData {
   final int id;
   final String name;
@@ -7,10 +9,10 @@ class StoryData {
 
   StoryData(
       {required this.id,
-        required this.name,
-        required this.imageFileName,
-        required this.iconFileName,
-        required this.isViewed});
+      required this.name,
+      required this.imageFileName,
+      required this.iconFileName,
+      required this.isViewed});
 }
 
 class Category {
@@ -33,12 +35,12 @@ class PostData {
 
   PostData(
       {required this.id,
-        required this.caption,
-        required this.title,
-        required this.likes,
-        required this.time,
-        required this.isBookmarked,
-        required this.imageFileName});
+      required this.caption,
+      required this.title,
+      required this.likes,
+      required this.time,
+      required this.isBookmarked,
+      required this.imageFileName});
 }
 
 class AppDatabase {
@@ -141,5 +143,18 @@ class AppDatabase {
           time: '41hr ago',
           imageFileName: 'small_post_3.jpg'),
     ];
+  }
+
+  static List<OnBoardingItem> get onBoardingItems {
+    List<OnBoardingItem> items = [];
+    for (var i = 0; i < 4; i++) {
+      items.add(
+        OnBoardingItem(
+            title: 'Read the article you want instantly',
+            description:
+                'You can read thousands of articles on Blog Club, save them in the application and share them with your loved ones.'),
+      );
+    }
+    return items;
   }
 }
