@@ -74,7 +74,7 @@ ThemeData theme() {
       bodyText1: TextStyle(
         color: primaryTextColor,
         fontWeight: FontWeight.normal,
-        fontSize: 12,
+        fontSize: 14,
       ),
       bodyText2: TextStyle(
         color: primaryTextColor,

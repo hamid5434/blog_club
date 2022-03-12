@@ -50,6 +50,7 @@ class ArticleScreen extends StatelessWidget {
       body: Stack(
         children: [
           CustomScrollView(
+            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
                 // pinned: true,
@@ -146,6 +147,7 @@ class ArticleScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
+                  const SizedBox(height: 50,),
                 ]),
               ),
             ],

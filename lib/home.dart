@@ -1,5 +1,5 @@
-
-
+import 'package:blog_club/article.dart';
+import 'package:blog_club/main.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +30,13 @@ class HomePage extends StatelessWidget {
                       'Hi, Reza!',
                       style: Theme.of(context).textTheme.subtitle1,
                     ),
-                    Assets.img.icons.notification.image(width: 30,height: 35)
+                    Assets.img.icons.notification.image(width: 30, height: 35)
                   ],
                 ),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 child: Text(
                   "Explore Today's!",
                   style: Theme.of(context).textTheme.headline6,
@@ -76,10 +76,10 @@ class HomePage extends StatelessWidget {
                     children: [
                       item.isViewed
                           ? _profile_view_viewed(
-                          imageFileName: item.imageFileName,
-                          context: context)
+                              imageFileName: item.imageFileName,
+                              context: context)
                           : _profile_view_normal(
-                          imageFileName: item.imageFileName),
+                              imageFileName: item.imageFileName),
                       Positioned(
                           bottom: 0,
                           right: 0,
@@ -190,114 +190,8 @@ class PostList extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             itemBuilder: (context, index) {
               PostData post = posts[index];
-              return Container(
-                height: 149,
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0x1a5282ff),
-                        blurRadius: 10,
-                      )
-                    ]),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(24),
-                      child: Image.asset(
-                        'assets/img/posts/small/${post.imageFileName}',
-                        width: 149,
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              post.caption,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyText2!
-                                  .copyWith(
-                                color: Theme.of(context).primaryColorDark,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              post.title,
-                              style: Theme.of(context).textTheme.subtitle1,
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Icon(
-                                  CupertinoIcons.hand_thumbsup,
-                                  size: 16,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2!
-                                      .color,
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  post.likes,
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Icon(
-                                  CupertinoIcons.clock,
-                                  size: 16,
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .bodyText2!
-                                      .color,
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  post.time,
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.centerRight,
-                                    child: Icon(
-                                      post.isBookmarked
-                                          ? CupertinoIcons.bookmark_fill
-                                          : CupertinoIcons.bookmark,
-                                      size: 16,
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2!
-                                          .color,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              return Post(
+                post: post,
               );
             }),
         const SizedBox(
@@ -308,8 +202,132 @@ class PostList extends StatelessWidget {
   }
 }
 
+class Post extends StatelessWidget {
+  final PostData post;
+
+  const Post({Key? key, required this.post}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ArticleScreen(),
+          ),
+        );
+      },
+      child: Container(
+        height: 149,
+        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x1a5282ff),
+                blurRadius: 10,
+              )
+            ]),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Image.asset(
+                'assets/img/posts/small/${post.imageFileName}',
+                width: 149,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      post.caption,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                            color: Theme.of(context).primaryColorDark,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      post.title,
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Icon(
+                          CupertinoIcons.hand_thumbsup,
+                          size: 16,
+                          color: Theme.of(context).textTheme.bodyText2!.color,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          post.likes,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        Icon(
+                          CupertinoIcons.clock,
+                          size: 16,
+                          color: Theme.of(context).textTheme.bodyText2!.color,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          post.time,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.centerRight,
+                            child: Icon(
+                              post.isBookmarked
+                                  ? CupertinoIcons.bookmark_fill
+                                  : CupertinoIcons.bookmark,
+                              size: 16,
+                              color:
+                                  Theme.of(context).textTheme.bodyText2!.color,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+  const BottomNavigation({
+    Key? key,
+    required this.onTab,
+    required this.selectIndex,
+  }) : super(key: key);
+  final Function(int index) onTab;
+
+  final int selectIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -333,25 +351,41 @@ class BottomNavigation extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   BottomNavigationItem(
+                    onTab: () {
+                      onTab(HOMEINDEX);
+                    },
+                    isActive: selectIndex == HOMEINDEX,
                     title: 'Home',
                     ActiveIconFileName: 'Home.png',
                     iconFileName: 'Home.png',
                   ),
                   BottomNavigationItem(
+                    onTab: () {
+                      onTab(ARTICLEINDEX);
+                    },
+                    isActive: selectIndex == ARTICLEINDEX,
                     title: 'Article',
                     ActiveIconFileName: 'Articles.png',
                     iconFileName: 'Articles.png',
                   ),
-                  SizedBox(
-                    width: 8,
+                  const Expanded(
+                    child: SizedBox(),
                   ),
                   BottomNavigationItem(
+                    onTab: () {
+                      onTab(SEARCHINDEX);
+                    },
+                    isActive: selectIndex == SEARCHINDEX,
                     title: 'Search',
                     ActiveIconFileName: 'Search.png',
                     iconFileName: 'Search.png',
                   ),
                   BottomNavigationItem(
+                    onTab: () {
+                      onTab(PROFILEINDEX);
+                    },
                     title: 'Menu',
+                    isActive: selectIndex == PROFILEINDEX,
                     ActiveIconFileName: 'Menu.png',
                     iconFileName: 'Menu.png',
                   ),
@@ -371,8 +405,7 @@ class BottomNavigation extends StatelessWidget {
                     borderRadius: BorderRadius.circular(32.5),
                     border: Border.all(color: Colors.white, width: 4),
                   ),
-                  child: Assets.img.icons.plus.image()
-              ),
+                  child: Assets.img.icons.plus.image()),
             ),
           )
         ],
@@ -385,28 +418,42 @@ class BottomNavigationItem extends StatelessWidget {
   final String iconFileName;
   final String ActiveIconFileName;
   final String title;
+  final bool isActive;
+  final Function() onTab;
 
-  const BottomNavigationItem({
-    Key? key,
-    required this.iconFileName,
-    required this.ActiveIconFileName,
-    required this.title,
-  }) : super(key: key);
+  const BottomNavigationItem(
+      {Key? key,
+      required this.iconFileName,
+      required this.ActiveIconFileName,
+      required this.title,
+      required this.isActive,
+      required this.onTab})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset('assets/img/icons/$iconFileName'),
-        const SizedBox(
-          height: 4,
+    return Expanded(
+      child: InkWell(
+        onTap: onTab,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/img/icons/$iconFileName',
+              color: isActive ? Colors.blue.shade700 : Colors.grey.shade600,
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.caption!.copyWith(
+                  color:
+                      isActive ? Colors.blue.shade700 : Colors.grey.shade700),
+            )
+          ],
         ),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.caption,
-        )
-      ],
+      ),
     );
   }
 }
